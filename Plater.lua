@@ -3044,7 +3044,6 @@ local class_specs_coords = {
 			local isSelf = UnitIsUnit (unitID, "player")
 			
 			local actorType
-			local isPlateEnabled = true
 			if (unitID) then
 				
 				if (isSelf) then
@@ -3059,8 +3058,6 @@ local class_specs_coords = {
 						
 						if (reaction >= UNITREACTION_FRIENDLY) then
 							actorType = ACTORTYPE_FRIENDLY_PLAYER
-							
-							isPlateEnabled = false
 							
 						else
 							actorType = ACTORTYPE_ENEMY_PLAYER
@@ -3083,6 +3080,7 @@ local class_specs_coords = {
 					end
 				end
 			end
+			local isPlateEnabled = DB_PLATE_CONFIG [actorType].enabled
 			
 			local blizzardPlateFrameID = tostring(plateFrame.UnitFrame)
 			plateFrame.unitFrame.blizzardPlateFrameID = blizzardPlateFrameID
